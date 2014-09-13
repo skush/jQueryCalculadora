@@ -16,7 +16,8 @@
     // overridable defaults
     Calculadora.prototype.options = {
         decimals: 2,
-        useCommaAsDecimalMark: false
+        useCommaAsDecimalMark: false,
+        innerInputTitle: "use right +-*/ and kM% for inline calculation"
     };
 
     Calculadora.prototype.init = function() {
@@ -25,6 +26,10 @@
         var LastOperator = 0;
         var TotalSoFar = 0;
         var TicketIsVisible = false;
+
+        if (o.innerInputTitle && typeof o.innerInputTitle === "string" && o.innerInputTitle.length > 0) {
+            self.attr("title", o.innerInputTitle);
+        }
 
         self.blur(function() {
             LastOperator = 0;
